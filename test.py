@@ -1,24 +1,41 @@
-import numpy as np
-import matplotlib.pyplot as plt
+import math
+import pygame
+from sys import exit
 
 
-def circle_orbit(theta):
-    x = np.cos(theta)*50
-    y = np.sin(theta)*50
-    return x, y
+pygame.init()
+size = width, height = 600, 600
+screen = pygame.display.set_mode(size)
+pygame.display.set_caption('Background')
+clock = pygame.time.Clock()
 
-theta = np.linspace(0, 2*np.pi, 100)
+G = 1
 
-x_data = []
-y_data = []
+class Body:
+    def __init__(self, mass, radius, start_position):
+        self.mass = mass
+        self.radius = radius
+        self.start_position = start_position
+            
+            
+    def draw(self, surface, color):
+        pygame.draw.circle(surface, color, self.start_position, self.radius)
+        
 
-for t in theta:
-    x, y = circle_orbit(t)
-    x_data.append(x)
-    y_data.append(y)
+planet1 = Body(1, 10, (width/2, height/2))
+
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+            
+    # Background        
+    screen.fill('#000000')
     
-print(circle_orbit(2*np.pi)[0])
-
-# plt.figure(figsize=(4,4)) 
-# plt.plot(x_data, y_data)
-# plt.show()
+    planet1.draw(screen, 'White')
+    
+    pygame.display.flip()
+    clock.tick(60)
