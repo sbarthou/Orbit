@@ -78,8 +78,7 @@ while running:
     
     cuadrado.draw_lines()
     quad.NO.draw_lines()
-    
-    
+    quad.NE.draw_lines()
     
     pygame.display.flip()
     # clock.tick(60)
