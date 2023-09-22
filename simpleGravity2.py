@@ -97,7 +97,7 @@ class Body():
 
 
 bodies = []
-for i in range(500):
+for i in range(100):
     body = Body(1, 1, random.randint(0, width), random.randint(0, height), 0, 0)
     bodies.append(body)
     
@@ -131,4 +131,4 @@ while running:
             bodies.remove(body2)
     
     pygame.display.flip()
-    clock.tick(2)
+    clock.tick(60)
